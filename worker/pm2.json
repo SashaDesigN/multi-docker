@@ -1,0 +1,18 @@
+{
+  "name"             : "worker",
+  "cwd"              : "/app",
+  "script"           : "index.js",
+  "log_date_format"  : "YYYY-MM-DD HH:mm Z",
+  "error_file"       : "/app/stderr.log",
+  "out_file"         : "/app/stdout.log",
+  "pid_file"         : "/app/api.pid",
+  "watch"            : false,
+  "ignore_watch"      : ["[\\/\\\\]\\./", "node_modules"],
+  "merge_logs"       : true,
+  "exec_interpreter" : "node",
+  "exec_mode"        : "fork",
+  "autorestart"      : true,
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
