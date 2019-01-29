@@ -1,0 +1,20 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t alexberg/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run alexberg/react-test npm run test -- --coverage
+
+after_success:
+   - docker build -t alexberg/multi-client ./client
+   - docker build -t alexberg/multi-nginx ./nginx
+   - docker build -t alexberg/multi-server ./server
+   - docker build -t alexberg/multi-worker ./worker
+   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+   - docker push alexberg/multi-client
+   - docker push alexberg/multi-nginx
+   - docker push alexberg/multi-server
+   - docker push alexberg/multi-worker
