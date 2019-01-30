@@ -16,7 +16,7 @@ class App extends Component {
             <p>
               Edit <code>src/App.js</code> and save to reload.
             </p>
-            <Link to="/">Home</Link>
+            <Link to="/">Home Page</Link>
             <Link to="/otherpage">Other Page</Link>
           </header>
           <div>
